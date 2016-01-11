@@ -10,6 +10,7 @@
 angular.module('jfokus2016ScheduleApp').service('jfokusShemaGetter', function($http, $log) {
   // AngularJS will instantiate a singleton by calling "new" on this function
   this.get = function() {
+    /*
     $http({
       method: 'GET',
       url: 'http://www.jfokus.se/jfokus/schedule.jsp'
@@ -17,6 +18,11 @@ angular.module('jfokus2016ScheduleApp').service('jfokusShemaGetter', function($h
       $log.info('response='+JSON.stringify(response));
     }, function errorCallback(response) {
       throw 'jfokus not responding... response='+JSON.stringify(response);
+    });
+    */
+    $http.jsonp('http://www.jfokus.se/jfokus/schedule.jsp')
+    .success(function(data){
+      $log.info(data)
     });
   };
 });
